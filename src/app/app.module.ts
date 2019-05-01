@@ -18,6 +18,8 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import {StopTrainingComponent} from './training/current-training/stop-training.component';
 import {MatDialogModule} from '@angular/material';
+import {AuthService} from './auth/auth.service';
+import {TrainingService} from './training/training.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import {MatDialogModule} from '@angular/material';
     ReactiveFormsModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [AuthService, TrainingService],
   bootstrap: [AppComponent],
   entryComponents: [StopTrainingComponent]
 })
