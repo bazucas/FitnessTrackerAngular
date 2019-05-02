@@ -1,4 +1,4 @@
-import {Subject, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {Exercise} from './exercise.model';
 import {map, take} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
@@ -14,11 +14,6 @@ import {Store} from '@ngrx/store';
 })
 export class TrainingService {
 
-  exerciseChanged = new Subject<Exercise>();
-  exercisesChanged = new Subject<Exercise[]>();
-  finishedExercisesChanged = new Subject<Exercise[]>();
-  private availableExercises: Exercise[] = [];
-  private runningExercise: Exercise;
   private afSubscriptions: Subscription[] = [];
 
   constructor(private db: AngularFirestore,
@@ -52,7 +47,6 @@ export class TrainingService {
       }, err => {
         this.store.dispatch(new UI.StopLoading());
         this.uiService.showSnackBar('Fetching Exercises failed, please try again later', null, 3000);
-        this.exercisesChanged.next(null);
       })
     );
   }
