@@ -20,6 +20,9 @@ import {StopTrainingComponent} from './training/current-training/stop-training.c
 import {MatDialogModule} from '@angular/material';
 import {AuthService} from './auth/auth.service';
 import {TrainingService} from './training/training.service';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,8 @@ import {TrainingService} from './training/training.service';
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [AuthService, TrainingService],
   bootstrap: [AppComponent],
